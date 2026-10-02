@@ -48,6 +48,10 @@ else
   build_egl = enable_egl == 'yes'
 endif
 
+if host_system == 'darwin' and build_egl
+  add_project_arguments('-DWL_EGL_PLATFORM', language: 'c')
+endif
+
 enable_x11 = get_option('x11')
 if not enable_x11
   if enable_glx == 'yes'
